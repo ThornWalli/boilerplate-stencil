@@ -3,6 +3,7 @@ import { postcss } from '@stencil-community/postcss';
 import postcssConfig from './postcss.config.ts';
 export const config: Config = {
   namespace: 'boilerplate-stencil',
+  suppressReservedPublicNameWarnings: true,
   outputTargets: [
     {
       type: 'dist',
@@ -15,10 +16,17 @@ export const config: Config = {
     },
     {
       type: 'www',
-      serviceWorker: null, // disable service workers
+      serviceWorker: null, 
     },
   ],
+  excludeUnusedDependencies: true,
   plugins: [
     postcss(postcssConfig)
-  ]
+  ],
+  testing: {
+    browserHeadless: true,
+  },
+  extras: {
+    experimentalSlotFixes: true,
+  },
 };

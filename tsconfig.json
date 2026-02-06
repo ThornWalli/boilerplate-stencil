@@ -18,8 +18,7 @@
     "jsxFragmentFactory": "h.Fragment"
   },
   "include": [
-    "src"
-, "vitest.config.ts", "postcss.config.ts"  ],
+    "src" ],
   "exclude": [
     "node_modules"
   ]

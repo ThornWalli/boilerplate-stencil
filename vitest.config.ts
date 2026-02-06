@@ -32,19 +32,51 @@ export default defineVitestConfig({
         },
       },
       // Browser tests
+      // {
+      //   test: {
+      //     name: 'browser',
+      //     include: ['src/**/*.e2e.{ts,tsx}'],
+      //     setupFiles: ['./vitest-setup.ts'],
+      //     browser: {
+      //       enabled: true,
+      //       provider: playwright(),
+      //       headless: true,
+      //       instances: [{ browser: 'chromium' }],
+      //     },
+      //   },
+      // },
+
       {
         test: {
           name: 'browser',
-          include: ['src/**/*.test.{ts,tsx}'],
+          include: ['**/*.e2e.{ts,tsx}'],
           setupFiles: ['./vitest-setup.ts'],
           browser: {
             enabled: true,
             provider: playwright(),
             headless: true,
             instances: [{ browser: 'chromium' }],
+            expect: {
+              toMatchScreenshot: {
+                comparatorName: 'pixelmatch',
+                comparatorOptions: {
+                  threshold: 0.5,
+                  allowedMismatchedPixels: 100,
+                },
+                resolveScreenshotPath: ({
+                  arg,
+                  browserName,
+                  ext,
+                  testFileName,
+                  screenshotDirectory,
+                  testFileDirectory,
+                  root,
+                }) => `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-${browserName}${ext}`,
+              },
+            },
           },
         },
-      },
+      }
     ],
   },
 });

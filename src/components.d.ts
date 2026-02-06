@@ -5,7 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ClassicEditor, EditorConfig } from "ckeditor5";
+export { ClassicEditor, EditorConfig } from "ckeditor5";
 export namespace Components {
+    interface BaseCkeditor {
+        /**
+          * @default {}
+         */
+        "config": EditorConfig;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -20,19 +28,57 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface StencilPlayground {
+    }
+}
+export interface BaseCkeditorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLBaseCkeditorElement;
 }
 declare global {
+    interface HTMLBaseCkeditorElementEventMap {
+        "editor": ClassicEditor;
+    }
+    interface HTMLBaseCkeditorElement extends Components.BaseCkeditor, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLBaseCkeditorElementEventMap>(type: K, listener: (this: HTMLBaseCkeditorElement, ev: BaseCkeditorCustomEvent<HTMLBaseCkeditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLBaseCkeditorElementEventMap>(type: K, listener: (this: HTMLBaseCkeditorElement, ev: BaseCkeditorCustomEvent<HTMLBaseCkeditorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLBaseCkeditorElement: {
+        prototype: HTMLBaseCkeditorElement;
+        new (): HTMLBaseCkeditorElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLStencilPlaygroundElement extends Components.StencilPlayground, HTMLStencilElement {
+    }
+    var HTMLStencilPlaygroundElement: {
+        prototype: HTMLStencilPlaygroundElement;
+        new (): HTMLStencilPlaygroundElement;
+    };
     interface HTMLElementTagNameMap {
+        "base-ckeditor": HTMLBaseCkeditorElement;
         "my-component": HTMLMyComponentElement;
+        "stencil-playground": HTMLStencilPlaygroundElement;
     }
 }
 declare namespace LocalJSX {
+    interface BaseCkeditor {
+        /**
+          * @default {}
+         */
+        "config"?: EditorConfig;
+        "onEditor"?: (event: BaseCkeditorCustomEvent<ClassicEditor>) => void;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -47,6 +93,8 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface StencilPlayground {
+    }
 
     interface MyComponentAttributes {
         "first": string;
@@ -55,14 +103,18 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
+        "base-ckeditor": BaseCkeditor;
         "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
+        "stencil-playground": StencilPlayground;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "base-ckeditor": LocalJSX.IntrinsicElements["base-ckeditor"] & JSXBase.HTMLAttributes<HTMLBaseCkeditorElement>;
             "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "stencil-playground": LocalJSX.IntrinsicElements["stencil-playground"] & JSXBase.HTMLAttributes<HTMLStencilPlaygroundElement>;
         }
     }
 }

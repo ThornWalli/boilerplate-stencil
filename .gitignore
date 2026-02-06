@@ -4,3 +4,5 @@ dist
 .stencil
 .history
 .DS_Store
+.stencil-*
+__screenshots__
