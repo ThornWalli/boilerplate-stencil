@@ -19,13 +19,20 @@ export class HelperCKEditor {
   @Event() editor: EventEmitter<ClassicEditor>;
 
   async setup() {
-    const { ClassicEditor, Essentials, Bold, Italic, Font, Paragraph } = await this.loadCkEditor();
+    const { ClassicEditor, Essentials, Bold, Italic, Font, Paragraph } =
+      await this.loadCkEditor();
 
     const editor = await ClassicEditor.create(this.host, {
       ...this.config,
       placeholder: this.config.placeholder ?? 'Inhalt hier bearbeiten...',
       plugins: [Essentials, Bold, Italic, Font, Paragraph],
-      toolbar: this.config.toolbar ?? ['bold', 'italic', 'fontFamily', 'undo', 'redo'],
+      toolbar: this.config.toolbar ?? [
+        'bold',
+        'italic',
+        'fontFamily',
+        'undo',
+        'redo'
+      ],
       licenseKey: 'GPL'
     });
 
@@ -33,7 +40,8 @@ export class HelperCKEditor {
   }
 
   async loadCkEditor() {
-    const { ClassicEditor, Essentials, Bold, Italic, Font, Paragraph } = await import('ckeditor5');
+    const { ClassicEditor, Essentials, Bold, Italic, Font, Paragraph } =
+      await import('ckeditor5');
 
     return {
       ClassicEditor,

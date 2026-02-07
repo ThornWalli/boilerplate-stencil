@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { format } from './utils';
 
 describe('format', () => {
@@ -15,6 +16,8 @@ describe('format', () => {
   });
 
   it('formats first, middle and last names', () => {
-    expect(format('Joseph', 'Quincy', 'Publique')).toEqual('Joseph Quincy Publique');
+    expect(format('Joseph', 'Quincy', 'Publique')).toEqual(
+      'Joseph Quincy Publique'
+    );
   });
 });
