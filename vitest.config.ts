@@ -10,16 +10,17 @@ export default defineVitestConfig({
         test: {
           name: 'unit',
           include: ['src/**/*.unit.{ts,tsx}'],
-          environment: 'node',
-        },
+          environment: 'node'
+        }
       },
+
       // Spec tests - via a node DOM of your choice
       {
         test: {
           name: 'spec',
           include: ['src/**/*.spec.{ts,tsx}'],
           environment: 'stencil',
-          setupFiles: ['./vitest-setup.ts'],
+          setupFiles: ['./vitest-setup.ts']
 
           // Optional environment options
 
@@ -29,7 +30,7 @@ export default defineVitestConfig({
           //                      ^^ Make sure to install relevant packages
           //   },
           // },
-        },
+        }
       },
       // Browser tests
       // {
@@ -61,7 +62,7 @@ export default defineVitestConfig({
                 comparatorName: 'pixelmatch',
                 comparatorOptions: {
                   threshold: 0.5,
-                  allowedMismatchedPixels: 100,
+                  allowedMismatchedPixels: 100
                 },
                 resolveScreenshotPath: ({
                   arg,
@@ -70,13 +71,14 @@ export default defineVitestConfig({
                   testFileName,
                   screenshotDirectory,
                   testFileDirectory,
-                  root,
-                }) => `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-${browserName}${ext}`,
-              },
-            },
-          },
-        },
+                  root
+                }) =>
+                  `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-${browserName}${ext}`
+              }
+            }
+          }
+        }
       }
-    ],
-  },
+    ]
+  }
 });
