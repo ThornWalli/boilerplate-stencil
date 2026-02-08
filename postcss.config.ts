@@ -18,8 +18,3 @@ export default {
     postcssSortMediaQueries()
   ]
 };
-
-
-
-
-

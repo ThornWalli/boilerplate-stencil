@@ -1,4 +1,4 @@
-import { Config } from '@stencil/core';
+import type { Config } from '@stencil/core';
 import { postcss } from '@stencil-community/postcss';
 // @ts-ignore
 import postcssConfig from './postcss.config.ts';
@@ -9,12 +9,12 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader',
+      esmLoaderPath: '../loader'
     },
     {
       type: 'dist-custom-elements',
       customElementsExportBehavior: 'auto-define-custom-elements',
-      externalRuntime: false,
+      externalRuntime: false
     },
     {
       type: 'www',
@@ -45,9 +45,9 @@ export const config: Config = {
     postcss(postcssConfig)
   ],
   testing: {
-    browserHeadless: true,
+    browserHeadless: true
   },
   extras: {
-    experimentalSlotFixes: true,
-  },
+    experimentalSlotFixes: true
+  }
 };

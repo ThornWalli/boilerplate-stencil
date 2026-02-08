@@ -6,4 +6,4 @@
 // Load the Stencil components for this project
 await import('./dist/boilerplate-stencil/boilerplate-stencil.esm.js');
 
-export default {}
+export default {};

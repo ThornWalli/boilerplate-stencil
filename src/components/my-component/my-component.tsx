@@ -1,10 +1,11 @@
 import { Component, Prop, h } from '@stencil/core';
+
 import { format } from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
   styleUrl: 'my-component.pcss',
-  shadow: true,
+  shadow: true
 })
 export class MyComponent {
   /**
@@ -27,6 +28,10 @@ export class MyComponent {
   }
 
   render() {
-    return <div><span>Hello, World! I'm {this.getText()}</span></div>;
+    return (
+      <div>
+        <span>Hello, World! I'm {this.getText()}</span>
+      </div>
+    );
   }
 }

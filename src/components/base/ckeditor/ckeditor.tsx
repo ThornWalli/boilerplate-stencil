@@ -38,8 +38,14 @@ export class HelperCKEditor {
       ...this.config,
       placeholder: this.config.placeholder ?? 'Inhalt hier bearbeiten...',
       plugins: [Essentials, Bold, Italic, Font, Paragraph],
-      toolbar: this.config.toolbar ?? ['bold', 'italic', 'fontFamily', 'undo', 'redo'],
-      licenseKey: 'GPL',
+      toolbar: this.config.toolbar ?? [
+        'bold',
+        'italic',
+        'fontFamily',
+        'undo',
+        'redo'
+      ],
+      licenseKey: 'GPL'
     });
 
     this.editor.emit(this.editorInstance);
