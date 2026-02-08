@@ -1,6 +1,8 @@
 import { Config } from '@stencil/core';
 import { postcss } from '@stencil-community/postcss';
+// @ts-ignore
 import postcssConfig from './postcss.config.ts';
+
 export const config: Config = {
   namespace: 'boilerplate-stencil',
   suppressReservedPublicNameWarnings: true,
@@ -16,10 +18,29 @@ export const config: Config = {
     },
     {
       type: 'www',
-      serviceWorker: null, 
+      serviceWorker: null,
+      copy: [
+        {
+          src: '../node_modules/ckeditor5/dist/browser',
+          dest: 'ckeditor5',
+          warn: true
+        }
+      ]
     },
   ],
-  excludeUnusedDependencies: true,
+  rollupPlugins: {
+    before: [
+      {
+        name: 'external-deps',
+        resolveId(id) {
+          // Mark ckeditor5 as external - don't bundle it
+          if (id === 'ckeditor5' || id.startsWith('ckeditor5/')) {
+            return { id, external: true };
+          }
+        }
+      }
+    ]
+  },
   plugins: [
     postcss(postcssConfig)
   ],

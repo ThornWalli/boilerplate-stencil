@@ -25,3 +25,21 @@ Watch Benchmark Results:
   Total:      25.50m 
 ```
 Detailed output is located here: [ubuntu_24.04.3.benchmark.txt](ubuntu_24.04.3.benchmark.txt)
+
+Mit dynamischen Imports:
+```
+Build Benchmark Results: 
+  Iterations: 995 
+  Average:    3502.99ms 
+  Minimum:    3382.99ms 
+  Maximum:    4200.74ms 
+  Total:      58.09m 
+
+Watch Benchmark Results: 
+  Iterations: 1000 
+  Average:    251.82ms 
+  Minimum:    194.35ms 
+  Maximum:    460.53ms 
+  Total:      4.20m 
+
+```
