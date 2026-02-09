@@ -1,6 +1,5 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, Prop } from '@stencil/core';
-import type { ClassicEditor, EditorConfig } from 'ckeditor5';
+import type {EventEmitter} from '@stencil/core';
+import {Component, Element, Event, Prop} from '@stencil/core';
 
 @Component({
   tag: 'base-ckeditor',
@@ -10,19 +9,32 @@ import type { ClassicEditor, EditorConfig } from 'ckeditor5';
 export class HelperCKEditor {
   @Element() host!: HTMLElement;
 
-  @Prop() config: EditorConfig = {};
+  @Prop() config: any = {};
 
   async componentWillLoad() {
     await this.setup();
   }
 
-  @Event() editor: EventEmitter<ClassicEditor>;
+  @Event() editor: EventEmitter;
+
+  private editorInstance: any;
+
+  disconnectedCallback() {
+    this.editorInstance?.destroy?.();
+    this.editorInstance = undefined;
+  }
+
+  private async loadCkEditor() {
+    return import('ckeditor5');
+  }
 
   async setup() {
-    const { ClassicEditor, Essentials, Bold, Italic, Font, Paragraph } =
-      await this.loadCkEditor();
 
-    const editor = await ClassicEditor.create(this.host, {
+    if (this.editorInstance) return;
+
+    const { ClassicEditor, Essentials, Bold, Italic, Font, Paragraph } = await this.loadCkEditor();
+
+    this.editorInstance = await ClassicEditor.create(this.host, {
       ...this.config,
       placeholder: this.config.placeholder ?? 'Inhalt hier bearbeiten...',
       plugins: [Essentials, Bold, Italic, Font, Paragraph],
@@ -36,20 +48,6 @@ export class HelperCKEditor {
       licenseKey: 'GPL'
     });
 
-    this.editor.emit(editor);
-  }
-
-  async loadCkEditor() {
-    const { ClassicEditor, Essentials, Bold, Italic, Font, Paragraph } =
-      await import('ckeditor5');
-
-    return {
-      ClassicEditor,
-      Essentials,
-      Bold,
-      Italic,
-      Font,
-      Paragraph
-    };
+    this.editor.emit(this.editorInstance);
   }
 }

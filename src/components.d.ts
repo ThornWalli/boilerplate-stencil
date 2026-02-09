@@ -5,14 +5,12 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { ClassicEditor, EditorConfig } from "ckeditor5";
-export { ClassicEditor, EditorConfig } from "ckeditor5";
 export namespace Components {
     interface BaseCkeditor {
         /**
           * @default {}
          */
-        "config": EditorConfig;
+        "config": any;
     }
     interface MyComponent {
         /**
@@ -37,7 +35,7 @@ export interface BaseCkeditorCustomEvent<T> extends CustomEvent<T> {
 }
 declare global {
     interface HTMLBaseCkeditorElementEventMap {
-        "editor": ClassicEditor;
+        "editor": any;
     }
     interface HTMLBaseCkeditorElement extends Components.BaseCkeditor, HTMLStencilElement {
         addEventListener<K extends keyof HTMLBaseCkeditorElementEventMap>(type: K, listener: (this: HTMLBaseCkeditorElement, ev: BaseCkeditorCustomEvent<HTMLBaseCkeditorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -76,8 +74,8 @@ declare namespace LocalJSX {
         /**
           * @default {}
          */
-        "config"?: EditorConfig;
-        "onEditor"?: (event: BaseCkeditorCustomEvent<ClassicEditor>) => void;
+        "config"?: any;
+        "onEditor"?: (event: BaseCkeditorCustomEvent<any>) => void;
     }
     interface MyComponent {
         /**
@@ -96,6 +94,9 @@ declare namespace LocalJSX {
     interface StencilPlayground {
     }
 
+    interface BaseCkeditorAttributes {
+        "config": string;
+    }
     interface MyComponentAttributes {
         "first": string;
         "middle": string;
@@ -103,7 +104,7 @@ declare namespace LocalJSX {
     }
 
     interface IntrinsicElements {
-        "base-ckeditor": BaseCkeditor;
+        "base-ckeditor": Omit<BaseCkeditor, keyof BaseCkeditorAttributes> & { [K in keyof BaseCkeditor & keyof BaseCkeditorAttributes]?: BaseCkeditor[K] } & { [K in keyof BaseCkeditor & keyof BaseCkeditorAttributes as `attr:${K}`]?: BaseCkeditorAttributes[K] } & { [K in keyof BaseCkeditor & keyof BaseCkeditorAttributes as `prop:${K}`]?: BaseCkeditor[K] };
         "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
         "stencil-playground": StencilPlayground;
     }
