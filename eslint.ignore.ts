@@ -1,3 +1,3 @@
 export default {
-  ignores: ['.history', '**/dist/*', 'www']
+  ignores: ['node_modules', 'dist', '.history', '**/dist/*', '**/www/*', '**/loader/*']
 };

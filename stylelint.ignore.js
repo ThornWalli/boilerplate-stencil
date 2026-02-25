@@ -1,1 +1,1 @@
-export default ['./**/*.js', 'node_modules'];
+export default ['node_modules', 'dist', '.history', '**/dist/*', '**/www/*', '**/loader/*'];

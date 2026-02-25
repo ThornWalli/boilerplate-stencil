@@ -1,8 +1,18 @@
 export default {
   arrowParens: 'avoid',
-  bracketSameLine: true,
+  bracketSameLine: false,
   trailingComma: 'none',
   singleQuote: true,
   semi: true,
-  printWidth: 80
+  printWidth: 160,
+  endOfLine: 'lf',
+  htmlWhitespaceSensitivity: 'ignore',
+  overrides: [
+    {
+      files: '*.html',
+      options: {
+        parser: 'angular'
+      }
+    }
+  ]
 };

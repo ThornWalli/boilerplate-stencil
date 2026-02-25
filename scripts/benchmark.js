@@ -1,14 +1,15 @@
+/* eslint-disable import-x/no-nodejs-modules */
 import { execSync, spawn } from 'node:child_process';
 import { performance } from 'node:perf_hooks';
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const ITERATIONS = 1000;
+const ITERATIONS = 20;
 const STENCIL_BIN = 'node_modules/@stencil/core/bin/stencil';
 const BUILD_ARGS = ['build'];
 const WATCH_ARGS = ['build', '--dev', '--watch', '--no-serve'];
 const FILE_TO_CHANGE = 'src/components/my-component/my-component.tsx';
 
-const formatTime = (ms) => {
+const formatTime = ms => {
   if (ms < 5000) return `${ms.toFixed(2)}ms`;
   const s = ms / 1000;
   if (s < 60) return `${s.toFixed(2)}s`;
@@ -19,7 +20,7 @@ const formatTime = (ms) => {
 };
 
 function runBuildBenchmark() {
-  const command = `${STENCIL_BIN} ${BUILD_ARGS.join(' ')}`;
+  const command = `node ${STENCIL_BIN} ${BUILD_ARGS.join(' ')}`;
   console.log(`\nStarting Build Benchmark: ${command} (${ITERATIONS} iterations)`);
   const results = [];
   for (let i = 1; i <= ITERATIONS; i++) {
@@ -41,20 +42,20 @@ async function runWatchBenchmark() {
   console.log(`\nStarting Watch Benchmark: ${command} (${ITERATIONS} iterations)`);
   const originalContent = readFileSync(FILE_TO_CHANGE, 'utf8');
   const results = [];
-  
-  return new Promise((resolve) => {
-    const child = spawn(STENCIL_BIN, WATCH_ARGS);
+
+  return new Promise(resolve => {
+    const child = spawn('node', [STENCIL_BIN, ...WATCH_ARGS]);
     let iteration = 0;
     let startTime = 0;
 
-    child.stdout.on('data', (data) => {
+    child.stdout.on('data', data => {
       if (data.toString().includes('build finished')) {
         if (startTime) {
           const duration = performance.now() - startTime;
           results.push(duration);
           console.log(`  Iteration ${iteration}/${ITERATIONS} completed in ${formatTime(duration)}`);
         }
-        
+
         if (iteration < ITERATIONS) {
           iteration++;
           startTime = performance.now();
@@ -91,7 +92,7 @@ function printStats(name, results) {
 (async () => {
   const buildResults = runBuildBenchmark();
   const watchResults = await runWatchBenchmark();
-  
+
   console.log('\n' + '='.repeat(40) + '\nFINAL BENCHMARK SUMMARY\n' + '='.repeat(40));
   printStats('Build', buildResults);
   printStats('Watch', watchResults);

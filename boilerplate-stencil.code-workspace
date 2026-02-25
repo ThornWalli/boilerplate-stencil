@@ -58,10 +58,7 @@
       ".*ignore": "ignore",
       "*.js.tmpl": "javascript",
       "*.html.tmpl": "html"
-    },
-    "javascript.format.enable": false,
-    "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
-    "workbench.settings.enableNaturalLanguageSearch": false
+    }
   },
   "extensions": {}
 }

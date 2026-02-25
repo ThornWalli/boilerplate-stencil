@@ -1,7 +1,4 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-npx --no-install --node-options='--experimental-strip-types' lint-staged  -c lint-staged.config.ts
+npx --node-options='--experimental-strip-types' --no-install lint-staged --config lint-staged.config.ts

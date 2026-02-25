@@ -1,14 +1,11 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# BRANCH_NAME=$(git symbolic-ref --short HEAD)
-# REGEX='^(feature|bugfix|hotfix|release|chore)\/[a-z0-9\-]+$'
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+REGEX='^(feature|fix|hotfix|refactor|chore)\/[a-z0-9\-]+$'
 
-# if ! [[ $BRANCH_NAME =~ $REGEX ]]; then
-#   echo "Ungültiger Branch-Name: $BRANCH_NAME"
-#   echo "Branch-Namen müssen dem Muster entsprechen: z.B. feature/meine-funktion"
-#   exit 1
-# fi
+if ! [[ $BRANCH_NAME =~ $REGEX ]]; then
+  echo "Invalid branch name: $BRANCH_NAME"
+  echo "Branch names must follow the pattern: e.g. feature/my-feature"
+  exit 1
+fi

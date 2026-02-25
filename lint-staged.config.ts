@@ -1,4 +1,4 @@
 export default {
-  '*.(js|vue|json)': ['eslint .'],
-  '*.(vue|css|pcss)': ['stylelint "**/*.{css,pcss}"']
+  '*.{ts,tsx}': ['eslint --flag unstable_native_nodejs_ts_config .'],
+  '*.{pcss,css}': ['npm run lint:style']
 };
