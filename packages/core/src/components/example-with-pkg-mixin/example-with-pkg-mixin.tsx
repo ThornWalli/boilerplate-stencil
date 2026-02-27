@@ -1,5 +1,6 @@
 import { Component, h, Host, Mixin, Prop } from '@stencil/core';
-import { exampleFactory } from '@boilerplate-stencil/utilities/mixins/example';
+// import { exampleFactory } from '../../../../utilities/src/mixins/example'; // ✅
+import { exampleFactory } from '@boilerplate-stencil/utilities/mixins/example'; // ❌
 
 @Component({
   tag: 'example-with-pkg-mixin',
