@@ -7,3 +7,4 @@ dist
 .stencil-*
 __screenshots__
 loader
+components.d.ts
