@@ -15,6 +15,7 @@ export class StencilCore {
           middle="'Don't call me a framework'"
           last="JS"></my-component> */}
         <example-with-mixin text="Hello from prop!" mixinText="Hello from mixin!" />
+        <example-with-pkg-mixin text="Hello from prop!" mixinText="Hello from mixin!"></example-with-pkg-mixin>
       </Host>
     );
   }

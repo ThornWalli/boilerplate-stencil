@@ -1,8 +1,9 @@
+import type { Config } from '@stencil/core';
 import { postcss } from '@stencil-community/postcss';
 
 import postcssConfig from './postcss.config.ts';
 
-export const config = {
+export const config: Config = {
   namespace: 'boilerplate-stencil-core',
   suppressReservedPublicNameWarnings: true,
   outputTargets: [
@@ -27,6 +28,7 @@ export const config = {
       ]
     }
   ],
+
   rollupPlugins: {
     before: [
       {
