@@ -1,9 +1,13 @@
+// eslint-disable-next-line import-x/no-nodejs-modules
+import { join } from 'node:path';
+
 import { postcss } from '@stencil-community/postcss';
+import resolvePkg from 'resolve-pkg';
 
 import postcssConfig from './postcss.config.ts';
 
 export const config = {
-  namespace: 'boilerplate-stencil-playground',
+  namespace: 'boilerplate-stencil-components',
   suppressReservedPublicNameWarnings: true,
   outputTargets: [
     {
@@ -18,7 +22,13 @@ export const config = {
     {
       type: 'www',
       serviceWorker: null,
-      copy: []
+      copy: [
+        {
+          src: join(resolvePkg('@boilerplate-stencil/core')!, 'dist/boilerplate-stencil-core'),
+          dest: 'boilerplate-stencil-core',
+          warn: true
+        }
+      ]
     }
   ],
   plugins: [postcss(postcssConfig)],

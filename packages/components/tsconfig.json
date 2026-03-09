@@ -22,9 +22,11 @@
     "paths": {
       "@boilerplate-stencil/core": [
         "../core"
+      ],
+      "@boilerplate-stencil/utilities/*": [
+        "../utilities/src/*"
       ]
-    },
-    "allowJs": true
+    }
   },
   "include": ["src" ],
   "exclude": [

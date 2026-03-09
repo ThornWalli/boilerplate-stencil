@@ -1,6 +1,5 @@
 import { Component, h, Host, Mixin } from '@stencil/core';
-// eslint-disable-next-line import-x/no-unresolved
-import { exampleFactory } from '@boilerplate-stencil/core/collection/mixins/example';
+import { exampleFactory } from '@boilerplate-stencil/utilities/mixins/example';
 
 @Component({
   tag: 'mixin-external',

@@ -23,19 +23,7 @@
       "types": "./dist/types/components.d.ts",
       "import": "./dist/components/index.js",
       "require": "./dist/components/index.cjs.js"
-    },
-    "./components/*.js": {
-      "import": "./dist/components/*.js",
-      "types": "./dist/components/*.d.ts"
-    },
-    "./collection/mixins/*": {
-      "types": "./dist/types/mixins/*.d.ts",
-      "import": "./dist/collection/mixins/*.js",
-      "require": "./dist/collection/mixins/*.cjs"
     }
-  },
-  "imports": {
-    "#utilities": "../utilities/src/*"
   },
   "repository": {
     "type": "git",

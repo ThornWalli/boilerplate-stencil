@@ -6,14 +6,16 @@ import postcssConfig from './postcss.config.ts';
 export const config: Config = {
   namespace: 'boilerplate-stencil-core',
   suppressReservedPublicNameWarnings: true,
+  validatePrimaryPackageOutputTarget: true,
   outputTargets: [
     {
       type: 'dist',
-      esmLoaderPath: '../loader'
+      esmLoaderPath: '../loader',
+      isPrimaryPackageOutputTarget: true
     },
     {
       type: 'dist-custom-elements',
-      customElementsExportBehavior: 'auto-define-custom-elements',
+      customElementsExportBehavior: 'bundle',
       externalRuntime: false
     },
     {
