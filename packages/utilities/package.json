@@ -1,0 +1,26 @@
+{
+  "name": "@boilerplate-stencil/utilities",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    "./mixins/*": {
+      "default": "./src/mixins/*.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint:style": "echo \"No style linter\""
+  },
+  "devDependencies": {
+    "@stencil/core": "4.43.2"
+  }
+}

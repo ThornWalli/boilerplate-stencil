@@ -1,0 +1,73 @@
+{
+  "name": "@boilerplate-stencil/core",
+  "version": "0.0.1",
+  "description": "Boilerplate Stencil Core",
+  "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/boilerplate-stencil-core/boilerplate-stencil-core.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/boilerplate-stencil-core/boilerplate-stencil-core.esm.js",
+      "require": "./dist/boilerplate-stencil-core/boilerplate-stencil-core.cjs.js"
+    },
+    "./loader": {
+      "types": "./loader/index.d.ts",
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs"
+    },
+    "./components": {
+      "types": "./dist/types/components.d.ts",
+      "import": "./dist/components/index.js",
+      "require": "./dist/components/index.cjs.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThornWalli/boilerplate-stencil.git"
+  },
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil-test",
+    "test:watch": "stencil-test --watch",
+    "test:e2e": "stencil-test --project browser",
+    "test:spec": "stencil-test --project spec",
+    "lint:style": "stylelint \"**/*.{css,pcss}\"",
+    "generate": "stencil generate"
+  },
+  "peerDependencies": {
+    "ckeditor5": ">=47.5.0"
+  },
+  "devDependencies": {
+    "@stencil-community/postcss": "2.2.0",
+    "@stencil/core": "4.43.2",
+    "@stencil/vitest": "1.1.21",
+    "@types/node": "25.3.2",
+    "@types/postcss-import": "14.0.3",
+    "@vitest/browser-playwright": "4.0.18",
+    "husky": "9.1.7",
+    "lint-staged": "16.2.7",
+    "postcss-html": "1.8.1",
+    "postcss-import": "16.1.1",
+    "postcss-preset-env": "11.2.0",
+    "postcss-sort-media-queries": "5.2.0",
+    "stylelint": "17.4.0",
+    "stylelint-config-recess-order": "7.6.1",
+    "stylelint-config-standard": "40.0.0",
+    "stylelint-prettier": "5.0.3",
+    "unplugin-replace": "^0.6.3",
+    "vitest": "4.0.18"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@boilerplate-stencil/utilities": "workspace:*"
+  }
+}

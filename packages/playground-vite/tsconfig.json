@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "strict": true, // alle strikten Checks an
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "lib": [
+      "dom",
+      "es2022",
+      "es2024"
+    ],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "paths": {
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
