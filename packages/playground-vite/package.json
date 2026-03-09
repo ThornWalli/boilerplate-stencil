@@ -12,9 +12,9 @@
   },
   "devDependencies": {
     "@types/node": "25.3.5",
-    "pathe": "^2.0.3",
-    "resolve-pkg": "^3.0.1",
-    "rollup-plugin-copy": "^3.5.0",
+    "pathe": "2.0.3",
+    "resolve-pkg": "3.0.1",
+    "rollup-plugin-copy": "3.5.0",
     "typescript": "5.9.3",
     "vite": "7.3.1",
     "vite-plugin-static-copy": "3.2.0"
