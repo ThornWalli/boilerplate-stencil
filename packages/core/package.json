@@ -44,7 +44,7 @@
     "generate": "stencil generate"
   },
   "peerDependencies": {
-    "ckeditor5": ">=47.5.0"
+    "ckeditor5": "47.6.0"
   },
   "devDependencies": {
     "@stencil-community/postcss": "2.2.0",
@@ -63,7 +63,7 @@
     "stylelint-config-recess-order": "7.6.1",
     "stylelint-config-standard": "40.0.0",
     "stylelint-prettier": "5.0.3",
-    "unplugin-replace": "^0.6.3",
+    "unplugin-replace": "0.6.4",
     "vitest": "4.0.18"
   },
   "license": "MIT",
