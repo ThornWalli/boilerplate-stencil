@@ -8,3 +8,5 @@ dist
 __screenshots__
 loader
 components.d.ts
+core/utilities
+components/utilities

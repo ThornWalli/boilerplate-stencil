@@ -1,0 +1,15 @@
+{
+  "name": "@boilerplate-stencil/component-libary",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "20.3.9",
+    "@angular/core": "20.3.9",
+    "@boilerplate-stencil/components": "workspace:*"
+  },
+  "files": [
+    "README.md",
+    "index.d.ts",
+    "fesm2022"
+  ],
+  "sideEffects": true
+}
