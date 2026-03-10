@@ -1,11 +1,11 @@
 import { Component, h, Host } from '@stencil/core';
 
 @Component({
-  tag: 'stencil-playground',
-  styleUrl: 'stencil-playground.pcss',
+  tag: 'stencil-components',
+  styleUrl: 'stencil-components.pcss',
   shadow: true
 })
-export class StencilPlayground {
+export class StencilComponents {
   render() {
     return (
       <Host>
@@ -21,6 +21,7 @@ export class StencilPlayground {
           <legend>Mixin in External Component</legend>
           <example-with-mixin text="Hello from prop!" mixinText="Hello from mixin!" />
         </fieldset>
+        <test-component></test-component>
       </Host>
     );
   }

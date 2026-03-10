@@ -17,6 +17,8 @@ export class StencilCore {
         <example-with-mixin text="Hello from prop!" mixinText="Hello from mixin!" />
         <hr />
         <example-with-pkg-mixin text="Hello from prop!" mixinText="Hello from mixin!"></example-with-pkg-mixin>
+        <hr />
+        <base-button label="Custom Click me" />
       </Host>
     );
   }

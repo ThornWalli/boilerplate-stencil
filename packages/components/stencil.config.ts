@@ -3,6 +3,7 @@ import { join } from 'node:path';
 
 import { postcss } from '@stencil-community/postcss';
 import resolvePkg from 'resolve-pkg';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 
 import postcssConfig from './postcss.config.ts';
 
@@ -29,7 +30,13 @@ export const config = {
           warn: true
         }
       ]
-    }
+    },
+    angularOutputTarget({
+      componentCorePackage: '@boilerplate-stencil/components',
+      directivesProxyFile: '../angular/projects/component-library/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../angular/projects/component-library/src/lib/stencil-generated/index.ts',
+      outputType: 'standalone'
+    })
   ],
   plugins: [postcss(postcssConfig)],
 

@@ -1,5 +1,6 @@
 import type { Config } from '@stencil/core';
 import { postcss } from '@stencil-community/postcss';
+import { angularOutputTarget } from '@stencil/angular-output-target';
 
 import postcssConfig from './postcss.config.ts';
 
@@ -28,7 +29,13 @@ export const config: Config = {
           warn: true
         }
       ]
-    }
+    },
+    angularOutputTarget({
+      componentCorePackage: '@boilerplate-stencil/core',
+      directivesProxyFile: '../angular/projects/core-library/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../angular/projects/core-library/src/lib/stencil-generated/index.ts',
+      outputType: 'standalone'
+    })
   ],
 
   rollupPlugins: {
