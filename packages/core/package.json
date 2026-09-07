@@ -59,7 +59,7 @@
     "@types/postcss-import": "14.0.3",
     "@vitest/browser-playwright": "4.0.18",
     "husky": "9.1.7",
-    "lint-staged": "16.2.7",
+    "lint-staged": "16.4.0",
     "postcss-html": "1.8.1",
     "postcss-import": "16.1.1",
     "postcss-preset-env": "11.2.0",
