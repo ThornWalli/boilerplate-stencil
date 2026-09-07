@@ -14,10 +14,10 @@
     "lint:style": "pnpm run -r lint:style"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "20.4.2",
+    "@commitlint/config-conventional": "20.5.3",
     "@types/eslint-plugin-security": "3.0.1",
     "@types/node": "25.3.0",
-    "commitlint": "20.4.2",
+    "commitlint": "20.5.3",
     "eslint": "9.39.2",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.4",
