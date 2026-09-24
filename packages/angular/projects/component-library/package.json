@@ -2,8 +2,8 @@
   "name": "@boilerplate-stencil/component-libary",
   "version": "1.0.0",
   "peerDependencies": {
-    "@angular/common": "20.3.9",
-    "@angular/core": "20.3.9",
+    "@angular/common": "20.3.32",
+    "@angular/core": "20.3.32",
     "@boilerplate-stencil/components": "workspace:*"
   },
   "files": [
